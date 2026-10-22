@@ -1,18 +1,41 @@
-import 'dotenv/config'
-import express, { json } from 'express'
-import cors  from 'cors'
-import connectDB from './configs/mongodb.js'
+// import dotenv from 'dotenv';
+// import cors from 'cors';
+// import express from 'express';
+// import connectDB from './configs/mongodb.js';
 
-//  App config 
- const PORT=process.env.PORT || 4000
- const app=express();
- await connectDB();
- 
- // Intailize Middleware
- app.use(express(json))
-app.use(cors())
+// dotenv.config();
+
+import dns from 'node:dns';
+
+dns.setServers(['8.8.8.8', '8.8.4.4']);
+
+import dotenv from 'dotenv';
+dotenv.config();
+
+import cors from 'cors';
+import express from 'express';
+import connectDB from './configs/mongodb.js';
 
 
- //API routes
- app.get('/',(req,res)=>res.send("api working  singh and i am a software student and fome india and you tell me where are you from plz care fully thank you so much god."));
- app.listen(PORT,()=>console.log("Server runing at the"+PORT));
+
+//APP config
+
+ const  PORT= process.env.PORT || 4000;
+const app = express();
+
+await connectDB();
+
+//middlewares 
+app.use(cors());
+app.use(express.json());    
+// api endpoints
+app.get('/', (req, res) => {
+    res.status(200).json('API is working thank you this is my first api projrct');
+
+
+
+});
+
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});

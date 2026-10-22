@@ -1,13 +1,17 @@
- import mongoose from 'mongoose';
-  const useSchema= new mongoose.Schema({
-    clerkId:{type:String,required:ture, unique :ture},
-    email:{type:String,required:ture,unique:ture},
-    photo:{type:String,required:ture},
-    firstName:{type:String},
-    lastName:{type:String},
-    creaditBalance:{type:Number,default:10}
-  })
+import mongoose from 'mongoose';
 
-  const userModel=mongoose.user.models || mongoose.model("usser",useSchema);
 
-  export default userModel;
+
+const userSchema=new mongoose.Schema({
+    clerkId:{ type:String,required:true, unique:true},
+    mail:{type:String,required:true,unique:true},
+    photo:{type:String,required:true},
+    firstName:{type:String,required:true},
+    lastName:{type:String,required:true},
+    creditBalance:{type:Number,default:10}
+})
+
+
+const userModel=mongoose.models.User || mongoose.model('User',userSchema)
+
+export default userModel
