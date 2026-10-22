@@ -7,10 +7,12 @@ import Upload from '../component/Upload';
 import Footer from '../component/Footer';
 
 
+
  function Home() {
   return (
     <div>
-      <Header/>
+      
+     <Header/>
      <Steps/>
      <BgSlider/>
      <Testimonial/>
